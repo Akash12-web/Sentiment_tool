@@ -82,4 +82,6 @@ def index():
     return render_template("index.html", chatbot_output=chatbot_output, file=uploaded_filename)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    import nltk
+    nltk.download('vader_lexicon')
+    app.run(host='0.0.0.0', port=5000)
