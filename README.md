@@ -27,9 +27,6 @@ Bar & pie chart visualizations
 Alert system if negative tweets exceed 30%
 Simulated chatbot replies
 
-# Suggestions for Improvement
-- Add live tweet fetching via Twitter API
-- Integrate BERT or deep learning for better accuracy
-- Enable multilingual support
+
 
 
