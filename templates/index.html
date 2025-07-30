@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jatayu Sentiment Tool</title>
+</head>
+<body>
+    <h2>Upload Tweets CSV or Use Default</h2>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file"><br><br>
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if file %}
+        <h3>Analysis Done on: {{ file }}</h3>
+        <h3>Sentiment Charts:</h3>
+        <img src="{{ url_for('static', filename='charts/sentiment_distribution.png') }}" width="500"><br>
+        <img src="{{ url_for('static', filename='charts/sentiment_pie.png') }}" width="400"><br>
+    {% endif %}
+
+    {% if chatbot_output %}
+        <h3>Sample Chatbot Replies for Negative Tweets:</h3>
+        <ul>
+            {% for item in chatbot_output %}
+                <li><b>Tweet:</b> {{ item.text }}<br>
+                    <b>Sentiment:</b> {{ item.sentiment }}<br>
+                    <b>Bot Reply:</b> {{ item.reply }}</li><br>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
